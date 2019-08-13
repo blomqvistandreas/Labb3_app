@@ -1,6 +1,9 @@
 <template>
-    <Page>
-        <ActionBar title="Product page"/>
-
+    <Page actionBarHidden="false">
+        <Label text="Product page" />
     </Page>
 </template>
+
+<script>
+    export default { }
+</script>

@@ -1,22 +1,40 @@
+
 <template>
-    <Page>
-        <ActionBar title="Welcome to NativeScript-Vue!"/>
-        <GridLayout columns="*" rows="*">
-            <Label class="message" :text="msg" col="0" row="0"/>
-        </GridLayout>
+    <Page class="page">
+        <ActionBar title="Home" class="action-bar" />
+        <StackLayout>
+            <Button @tap="goToCart" text="Cart"></Button>
+            <Button @tap="goToCheckout" text="Checkout"></Button>
+            <Button @tap="goToProduct" text="Product"></Button>
+        </StackLayout>
     </Page>
-
 </template>
-
 <script>
-  export default {
-    data() {
-      return {
-        msg: 'Hello world!!'
-      }
+import Cart from './Cart.vue';
+import Checkout from './Checkout.vue';
+import Product from './Product.vue';
+
+export default {
+    data () {
+        return {
+        };
+    },
+    methods: {
+        goToCart() {
+            this.$navigateTo(Cart)
+        },
+        goToCheckout() {
+            this.$navigateTo(Checkout)
+        },
+        goToProduct() {
+            this.$navigateTo(Product)
+        }
     }
-  }
+}
 </script>
+
+<style scoped>
+</style>
 
 <style scoped>
     ActionBar {
