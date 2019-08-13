@@ -5,13 +5,14 @@
             <Label class="message" :text="msg" col="0" row="0"/>
         </GridLayout>
     </Page>
+
 </template>
 
-<script >
+<script>
   export default {
     data() {
       return {
-        msg: 'Hello World!'
+        msg: 'Hello world!!'
       }
     }
   }
