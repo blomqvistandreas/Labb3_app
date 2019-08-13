@@ -11,9 +11,15 @@
 </template>
 
 <script>
+  import cart from './Cart.vue'
+  import product from './Product.vue'
+  import checkout from './Checkout.vue'
+
+
   export default {
     data() {
       return {
+        Cart: cart,
         msg: 'Hello world!!'
       }
     }
