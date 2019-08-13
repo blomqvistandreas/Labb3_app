@@ -1,9 +1,11 @@
 <template>
     <Page>
-        <ActionBar title="Welcome to NativeScript-Vue!"/>
-        <GridLayout columns="*" rows="*">
-            <Label class="message" :text="msg" col="0" row="0"/>
-        </GridLayout>
+        <ActionBar title="YardSale"/>
+        <StackLayout>
+            <Button text="En Produkt" @tap="$navigateTo(Product)" />
+            <Button text="Checkout" @tap="$navigateTo(Checkout)" />
+            <Button text="Kundvagn" @tap="$navigateTo(Cart)" />
+        </StackLayout>
     </Page>
 </template>
 
@@ -11,7 +13,7 @@
   export default {
     data() {
       return {
-        msg: 'Hello World!'
+        msg: 'Hello Worldddd'
       }
     }
   }
