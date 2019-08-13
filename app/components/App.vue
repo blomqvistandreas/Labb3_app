@@ -1,16 +1,16 @@
+
 <template>
-    <Page>
-        <ActionBar title="YardSale"/>
+    <Page class="page">
+        <ActionBar title="Home" class="action-bar" />
         <StackLayout>
-            <Button text="En Produkt" @tap="$navigateTo(Product)" />
-            <Button text="Checkout" @tap="$navigateTo(Checkout)" />
-            <Button text="Kundvagn" @tap="$navigateTo(Cart)" />
+            <Button @tap="goToCart" text="Cart"></Button>
+            <Button @tap="goToCheckout" text="Checkout"></Button>
+            <Button @tap="goToProduct" text="Product"></Button>
         </StackLayout>
     </Page>
-
 </template>
-
 <script>
+<<<<<<< HEAD
   import cart from './Cart.vue'
   import product from './Product.vue'
   import checkout from './Checkout.vue'
@@ -22,9 +22,33 @@
         Cart: cart,
         msg: 'Hello world!!'
       }
+=======
+import Cart from './Cart.vue';
+import Checkout from './Checkout.vue';
+import Product from './Product.vue';
+
+export default {
+    data () {
+        return {
+        };
+    },
+    methods: {
+        goToCart() {
+            this.$navigateTo(Cart)
+        },
+        goToCheckout() {
+            this.$navigateTo(Checkout)
+        },
+        goToProduct() {
+            this.$navigateTo(Product)
+        }
+>>>>>>> 852d913dde89f1dc70cb3a5284f76e18a39c0979
     }
-  }
+}
 </script>
+
+<style scoped>
+</style>
 
 <style scoped>
     ActionBar {

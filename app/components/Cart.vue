@@ -1,11 +1,11 @@
 <template>
-    <Page>
-        <ActionBar title="Cart page"/>
-        
+    <Page actionBarHidden="false">
+        <Label text="Cart page" />
     </Page>
 </template>
 
 <script>
+<<<<<<< HEAD
   export default {
     data() {
       return {
@@ -21,3 +21,7 @@
         color: #ffffff;
     }
 </style>
+=======
+    export default { }
+</script>
+>>>>>>> 852d913dde89f1dc70cb3a5284f76e18a39c0979
