@@ -7,13 +7,14 @@
             <Button text="Kundvagn" @tap="$navigateTo(Cart)" />
         </StackLayout>
     </Page>
+
 </template>
 
-<script >
+<script>
   export default {
     data() {
       return {
-        msg: 'Hello Worldddd'
+        msg: 'Hello world!!'
       }
     }
   }
