@@ -10,19 +10,6 @@
     </Page>
 </template>
 <script>
-<<<<<<< HEAD
-  import cart from './Cart.vue'
-  import product from './Product.vue'
-  import checkout from './Checkout.vue'
-
-
-  export default {
-    data() {
-      return {
-        Cart: cart,
-        msg: 'Hello world!!'
-      }
-=======
 import Cart from './Cart.vue';
 import Checkout from './Checkout.vue';
 import Product from './Product.vue';
@@ -42,7 +29,6 @@ export default {
         goToProduct() {
             this.$navigateTo(Product)
         }
->>>>>>> 852d913dde89f1dc70cb3a5284f76e18a39c0979
     }
 }
 </script>
