@@ -4,7 +4,7 @@
         <ActionBar title="Home" class="action-bar" />
         <StackLayout>
             <Button @tap="goToCart" text="Cart"></Button>
-            <Button @tap="goToCheckout" text="Checkout"></Button>
+            <Button @tap="goToCheckout" text="Checkout"></Button>          
             <Button @tap="goToProduct" text="Product"></Button>
         </StackLayout>
     </Page>
