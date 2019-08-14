@@ -1,6 +1,6 @@
 <template>
     <Page actionBarHidden="false">
-        <Label text="Checkout page" />
+        <Label text="Payment details" />
     </Page>
 </template>
 
