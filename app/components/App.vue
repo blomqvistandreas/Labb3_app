@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import Cart from './Cart.vue'
-import Checkout from './Checkout.vue'
-import Product from './Product.vue'
+import Cart from './Cart.vue';
+import Checkout from './Checkout/PersonalDetails.vue';
+import Product from './Product.vue';
 import ProductCard from './ProductCard.vue'
 
 export default {
