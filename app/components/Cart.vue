@@ -1,26 +1,28 @@
 <template>
     <Page actionBarHidden="false" id="background">
         <ActionBar>
-        <ActionItem @tap="onTapDelete"
-            ios.systemIcon="18i" ios.position="right" -->
-            text="Checkout" android.position="popup" />
-    </ActionBar>
-        <Label text="Cart page" />
-        <button text="Checkout"/>
-        <ListView for="item in items"  @itemTap="onItemTap">
+        <!-- <ActionItem @tap="onTapDelete"
+            ios.systemIcon="18" ios.position="right"
+            text="Checkout" android.position="popup" /> -->
+        </ActionBar>
+    <StackLayout backgroundColor="#454d66">
+        <Label class="subtitle" text="Upgrade your lifestyle"/>
+        <button text="Go to checkout" color="white"/>
+        <ListView height="80%" for="item in items" @itemTap="onItemTap">
             <v-template>
                 <!-- Shows the list item label in the default color and style. -->
                <FlexboxLayout justifyContent="space-around" backgroundColor="#1c6b48" height="90">
                     <Image :src="item.image" stretch="aspectFit" width="70" />
-                    <Label text="Title"/>
-                    <Label text="Price"/>
-                    <Button text="Plus" height="30" @tap="plusTapped"/>
-                    <Label text="Quantity"/>
-                    <Button text="Minus" @tap="minusTapped"/>
+                    <Label width="22%" :text="item.name"/>
+                    <Label width="22%" :text="item.price"/>
+                    <Button width="11%" text="+" height="30" @tap="plusTapped"/>
+                    <Label width="11%" :text="item.quantity"/>
+                    <Button width="11%" text="-" @tap="minusTapped"/>
                 </FlexboxLayout>
             </v-template>
         </ListView> 
-        <label text="Checkout"></label>
+        <label class="subtitle" text="Total: $999999"/>
+    </StackLayout>
     </Page>
 </template>
 
@@ -32,6 +34,12 @@
         //      cartTable,
         // },
         methods: {
+            onItemTap() {
+                alert('Go to item')
+                .then(() => {
+                    console.log("Alert dialog closed.");
+                });
+            },
             minusTapped() {
                 alert('Item decressed')
                 .then(() => {
@@ -51,22 +59,40 @@
                 items: [
                     {
                         name:"Yacht",
-                        pris:"6000", 
-                        antal: 11,
+                        price:"6000", 
+                        quantity: 11,
                         image: "https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png",
                     },
                     {
                         name:"Byxor",
-                        pris:"600", 
-                        antal: 14,
+                        price:"600", 
+                        quantity: 14,
                         image: "https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png",
                     },
                     {
                         name:"Overall",
-                        pris:"900", 
-                        antal: 3,
+                        price:"900", 
+                        quantity: 9999,
                         image: "https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png",
-                    }
+                    },
+                    {
+                        name:"Tesla spacerocket launcher",
+                        price:"600", 
+                        quantity: 14,
+                        image: "https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png",
+                    },
+                    {
+                        name:"Byxor",
+                        price:"600", 
+                        quantity: 14,
+                        image: "https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png",
+                    },
+                    {
+                        name:"Byxor",
+                        price:"600", 
+                        quantity: 14,
+                        image: "https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png",
+                    },
                 ]
             }
         },
@@ -76,7 +102,6 @@
 <style scoped>
 
     Listview {
-        background-color: #454d66;
         color: antiquewhite;
         font-size: 14px;
         padding-top: 30px;
@@ -88,10 +113,15 @@
         height: 30%px;
     }
 
-    /* image {
-        height: 50%;
-        width: 50%;
-    } */
+   label {
+       text-align: center;
+       color: white;
+   } 
+
+   .subtitle {
+       margin: 6rem;
+       font-size: 24px;
+   }
 
 </style>
 
