@@ -33,11 +33,21 @@
                         name:"Yacht",
                         price:"6000", 
                         quantity: 99,
-                        image: 'https://images.pexels.com/photos/128756/pexels-photo-128756.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+                        image: "~/assets/images/yacht.png",
+                    };
+            let demoItem2 = {
+                        name:"Super frog",
+                        price:"6000", 
+                        quantity: 99,
+                        image: "~/assets/images/frog.jpg",
                     };
 
             for (let i = 0; i < 10; i++) {
-                this.items.push(demoItem);
+                if(i % 2 === 0) {
+                   this.items.push(demoItem);
+                } else {
+                    this.items.push(demoItem2);
+                }
             }
         },
         methods: {
@@ -98,7 +108,6 @@
     }
 
     image {
-        background-color: $find;
         height: 33%;
         margin: 10rem;
     }
@@ -112,10 +121,6 @@
         // border-top-width: 1rem;
         // padding: 4rem;
         // border-color: $black;
-    }
-
-    .landscape Listview {
-        background-color: $find;
     }
 
     .cell-button {
@@ -144,7 +149,6 @@
        border-bottom-width: 1rem;
        padding: 4rem;
        border-color: $black;
-       background-color: $find;
    }
 
 </style>
