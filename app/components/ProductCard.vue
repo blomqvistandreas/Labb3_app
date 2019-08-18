@@ -1,6 +1,6 @@
 <template>
   <StackLayout id="card">
-    <Image :src="product.image" stretch="aspectFit" />
+    <Image :src="product.image" stretch="aspectFill" />
     <GridLayout columns="*, *" rows="*">
       <Label textWrap="true" height="70" :text="product.name" row="0" col="0"/>
       <Label height="70" :text="product.price" row="0" col="1"/>
@@ -39,10 +39,12 @@ export default {
   }
   Label {
     text-align: center;
-    background-color: burlywood;
+    background-color: #58b368;
   }
   Image {
     object-fit: cover;
+    height: 340;
+    width: 340;
   }
   GridLayout {
     border-top-width: 1;
