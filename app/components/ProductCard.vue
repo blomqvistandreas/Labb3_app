@@ -1,5 +1,5 @@
 <template>
-  <StackLayout id="card">
+  <StackLayout id="card" @tap="goToProduct">
     <Image :src="product.image" stretch="aspectFill" />
     <GridLayout columns="*, *" rows="*">
       <Label textWrap="true" height="70" :text="product.name" row="0" col="0"/>
@@ -9,21 +9,17 @@
 </template>
 
 <script>
+import Product from './Product.vue'
+
 export default {
-  computed: {
-    productId() {
-      return '/product/'+this.product.id
-    },
-    productImage() {
-      return this.product.image
-    },
-  },
   props: {
     product: {}
   },
   methods: {
-    addToCart() {
-      this.$store.commit('updateCart', this.product)
+    goToProduct() {
+      this.$navigateTo(Product, {
+        
+      })
     }
   }
 }
