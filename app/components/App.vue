@@ -44,7 +44,6 @@
             </StackLayout>
           </ScrollView>
           <StackLayout row="1" col="0">
-            <Button @tap="tabChanged" text="tabChanged"></Button>
             <Button @tap="goToCart" text="Cart"></Button>
             <Button @tap="goToCheckout" text="Checkout"></Button>
             <Button @tap="goToProduct" text="Product"></Button>
