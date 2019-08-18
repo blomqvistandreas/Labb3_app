@@ -1,27 +1,25 @@
 <template>
     <Page actionBarHidden="false" id="background">
-        <ActionBar>
-        <!-- <ActionItem @tap="onTapDelete"
-            ios.systemIcon="18" ios.position="right"
-            text="Checkout" android.position="popup" /> -->
+        <ActionBar title="Cart">
         </ActionBar>
-    <StackLayout backgroundColor="#454d66">
-        <Label class="subtitle" text="Upgrade your lifestyle"/>
-        <button text="Go to checkout" color="white"/>
+    <StackLayout class="page">
+        <!-- <Label class="subtitle" text="Upgrade your lifestyle"/> -->
+        
         <ListView height="80%" for="item in items" @itemTap="onItemTap">
             <v-template>
                 <!-- Shows the list item label in the default color and style. -->
-               <FlexboxLayout justifyContent="space-around" backgroundColor="#1c6b48" height="90">
+               <FlexboxLayout justifyContent="space-around" class="cell" height="90">
                     <Image :src="item.image" stretch="aspectFit" width="70" />
                     <Label width="22%" :text="item.name"/>
                     <Label width="22%" :text="item.price"/>
-                    <Button width="11%" text="+" height="30" @tap="plusTapped"/>
+                    <Button class="cell-button" width="11%" text="-" @tap="minusTapped(item)"/>
                     <Label width="11%" :text="item.quantity"/>
-                    <Button width="11%" text="-" @tap="minusTapped"/>
+                    <Button class="cell-button" width="11%" text="+" height="30" @tap="plusTapped(item)"/>
                 </FlexboxLayout>
             </v-template>
         </ListView> 
         <label class="subtitle" text="Total: $999999"/>
+        <button text="Go to checkout" @tap="goToCheckout"/>
     </StackLayout>
     </Page>
 </template>
@@ -30,24 +28,40 @@
     //import cartTable from './CartTable'
     export default { 
         name: "Cart",
-        // components: {
-        //      cartTable,
-        // },
+        created() {
+            let demoItem = {
+                        name:"Yacht",
+                        price:"6000", 
+                        quantity: 99,
+                        image: 'https://images.pexels.com/photos/128756/pexels-photo-128756.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+                    };
+
+            for (let i = 0; i < 10; i++) {
+                this.items.push(demoItem);
+            }
+        },
         methods: {
-            onItemTap() {
-                alert('Go to item')
+            goToCheckout() {
+                alert('Go to Checkout')
                 .then(() => {
                     console.log("Alert dialog closed.");
                 });
             },
-            minusTapped() {
-                alert('Item decressed')
+
+            onItemTap(item) {
+                alert('Go to' + item.name)
                 .then(() => {
                     console.log("Alert dialog closed.");
                 });
             },
-            plusTapped() {
-                alert('Item added to cart')
+            minusTapped(item) {
+                alert(item.name +' decressed')
+                .then(() => {
+                    console.log("Alert dialog closed.");
+                });
+            },
+            plusTapped(item) {
+                alert(item.name + ' added to cart')
                 .then(() => {
                     console.log("Alert dialog closed.");
                 });
@@ -56,71 +70,81 @@
          data() {
             return {
                 extra: ["Checkout"],
-                items: [
-                    {
-                        name:"Yacht",
-                        price:"6000", 
-                        quantity: 11,
-                        image: "https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png",
-                    },
-                    {
-                        name:"Byxor",
-                        price:"600", 
-                        quantity: 14,
-                        image: "https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png",
-                    },
-                    {
-                        name:"Overall",
-                        price:"900", 
-                        quantity: 9999,
-                        image: "https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png",
-                    },
-                    {
-                        name:"Tesla spacerocket launcher",
-                        price:"600", 
-                        quantity: 14,
-                        image: "https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png",
-                    },
-                    {
-                        name:"Byxor",
-                        price:"600", 
-                        quantity: 14,
-                        image: "https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png",
-                    },
-                    {
-                        name:"Byxor",
-                        price:"600", 
-                        quantity: 14,
-                        image: "https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png",
-                    },
-                ]
+                demoImage: '../assets/images/boat.jpeg',
+                items: []
             }
         },
     }
 </script>
 
-<style scoped>
+
+<style lang="scss" scoped>
+    $primary: rgb(0, 147, 88);
+    $secondary: #53ba82;
+    $third: #1c6b48;
+    $white: rgb(246, 246, 246);
+    $black: rgb(50, 50, 50);
+    $background: #454d66;
+    $find: yellow;
+
+    .page {
+        background-color: $white;
+        color: $black;
+    }
+
+    .cell {
+        background-color: $white;
+        color: $black;
+    }
+
+    image {
+        background-color: $find;
+        height: 33%;
+        margin: 10rem;
+    }
 
     Listview {
-        color: antiquewhite;
+        color: $black;
+        margin-top: 10rem;
+        margin-bottom: 0rem;
         font-size: 14px;
-        padding-top: 30px;
+        // padding-top: 30px;
+        // border-top-width: 1rem;
+        // padding: 4rem;
+        // border-color: $black;
+    }
+
+    .landscape Listview {
+        background-color: $find;
+    }
+
+    .cell-button {
+        height: 33%;
+        font-weight: bolder;
+        margin: 10rem;
     }
 
     Button {
-        background-color: rgb(0, 147, 88);
+        background-color: $primary;
         border-radius: 5px;
-        height: 30%px;
+        margin: 6rem;
+        font-size: 25%;
+        color: $white;
     }
 
    label {
        text-align: center;
-       color: white;
    } 
 
    .subtitle {
-       margin: 6rem;
+    //    margin: 6rem;
        font-size: 24px;
+       color: $black;
+       border-top-width: 1rem;
+       border-bottom-width: 1rem;
+       padding: 4rem;
+       border-color: $black;
+       background-color: $find;
    }
 
 </style>
