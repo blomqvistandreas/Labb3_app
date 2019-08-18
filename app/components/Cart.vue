@@ -19,13 +19,16 @@
             </v-template>
         </ListView> 
         <label class="subtitle" text="Total: $999999"/>
-        <button text="Go to checkout" @tap="goToCheckout"/>
+        <button text="Go to checkout" @tap="goToCheckout()"/>
     </StackLayout>
     </Page>
 </template>
 
 <script>
     //import cartTable from './CartTable'
+    import Product from './Product.vue';
+    import Checkout from './Checkout/PersonalDetails.vue';
+
     export default { 
         name: "Cart",
         created() {
@@ -52,30 +55,18 @@
         },
         methods: {
             goToCheckout() {
-                alert('Go to Checkout')
-                .then(() => {
-                    console.log("Alert dialog closed.");
-                });
+                this.$navigateTo(Checkout)
             },
 
-            onItemTap(item) {
-                alert('Go to' + item.name)
-                .then(() => {
-                    console.log("Alert dialog closed.");
-                });
+            onItemTap() {
+                this.$navigateTo(Product)
             },
             minusTapped(item) {
-                alert(item.name +' decressed')
-                .then(() => {
-                    console.log("Alert dialog closed.");
-                });
+                item.quantity -= 1;
             },
             plusTapped(item) {
-                alert(item.name + ' added to cart')
-                .then(() => {
-                    console.log("Alert dialog closed.");
-                });
-            }
+                item.quantity += 1;
+            },
         },
          data() {
             return {
@@ -89,7 +80,7 @@
 
 
 <style lang="scss" scoped>
-    $primary: rgb(0, 147, 88);
+    $primary: #009358;
     $secondary: #53ba82;
     $third: #1c6b48;
     $white: rgb(246, 246, 246);
@@ -125,7 +116,7 @@
 
     .cell-button {
         height: 33%;
-        font-weight: bolder;
+        // font-weight: bolder;
         margin: 10rem;
     }
 
