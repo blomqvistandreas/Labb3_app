@@ -67,7 +67,7 @@ export default {
     created() {
         this.getProductsFromDB(1)
     },
-    components: {
+    components: { 
       ProductCard
     },
     data () {
