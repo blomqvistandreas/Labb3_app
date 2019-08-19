@@ -18,7 +18,9 @@ export default {
   methods: {
     goToProduct() {
       this.$navigateTo(Product, {
-        
+        // props: {
+        //   productId: product.id,
+        // }
       })
     }
   }
