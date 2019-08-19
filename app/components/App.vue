@@ -144,7 +144,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
     ActionBar {
         background-color: #58b368;
         color: #ffffff;

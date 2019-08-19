@@ -43,6 +43,7 @@ export default {
     object-fit: cover;
     height: 340;
     width: 340;
+    background-color: white;
   }
   GridLayout {
     border-top-width: 1;
