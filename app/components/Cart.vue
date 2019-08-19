@@ -18,7 +18,7 @@
                 </FlexboxLayout>
             </v-template>
         </ListView> 
-        <label class="subtitle" text="Total: $999999"/>
+        <label class="subtitle" :text="'Total: $' + getTotalPrice() "/>
         <button text="Go to checkout" @tap="goToCheckout()"/>
     </StackLayout>
     </Page>
@@ -35,13 +35,13 @@
             let demoItem = {
                         name:"Yacht",
                         price:"6000", 
-                        quantity: 99,
+                        quantity: 1,
                         image: "~/assets/images/yacht.png",
                     };
             let demoItem2 = {
                         name:"Super frog",
                         price:"6000", 
-                        quantity: 99,
+                        quantity: 1,
                         image: "~/assets/images/frog.jpg",
                     };
 
@@ -62,11 +62,21 @@
                 this.$navigateTo(Product)
             },
             minusTapped(item) {
+                if(item.quantity <= 0){
+                    return
+                }
                 item.quantity -= 1;
             },
             plusTapped(item) {
                 item.quantity += 1;
             },
+            getTotalPrice() {
+                let total = 0;
+                this.items.forEach(item => {
+                    total += (item.quantity * item.price)
+                });
+                return total;
+            }
         },
          data() {
             return {
