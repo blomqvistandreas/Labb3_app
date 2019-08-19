@@ -19,7 +19,7 @@ export default {
     goToProduct() {
       this.$navigateTo(Product, {
         props: {
-          productId: product.id,
+          productId: this.product.id,
         }
       })
     }
