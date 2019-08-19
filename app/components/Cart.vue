@@ -54,6 +54,7 @@
                     this.items.push(demoItem2);
                 }
             }
+            this.items = this.$store.state.cart;
         },
         methods: {
             removeItem(item) {

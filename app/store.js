@@ -64,26 +64,21 @@ export default new Vuex.Store({
       }
     },
     updateCart(state, product) {
-
       if(!product.quantity) {
         product.quantity = 1
       }
-
-     //add quantity if allready in cart
+      //add quantity if allready in cart
       for (let i = 0; i < state.cart.length; i+= 1) {
         const cartProduct = state.cart[i];
 
         if(cartProduct.id === product.id) {
-
           state.cart[i].quantity +=  1//product.quantity
-
           //update cart
           state.cart.push({})
           state.cart.pop()
           return
         }
       }
-
       //add product
       state.cart.push(product)
     }
