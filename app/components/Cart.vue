@@ -32,40 +32,51 @@
     export default { 
         name: "Cart",
         created() {
-            let demoItem = {
+            for (let i = 0; i < 10; i++) {
+                let x = i;
+                if(i % 2 === 0) {
+                    let demoItem = {
                         name:"Yacht",
                         price:"6000", 
                         quantity: 1,
                         image: "~/assets/images/yacht.png",
+                        id: x
                     };
-            let demoItem2 = {
+                   this.items.push(demoItem);
+                } else {
+                    let demoItem2 = {
                         name:"Super frog",
                         price:"6000", 
                         quantity: 1,
                         image: "~/assets/images/frog.jpg",
+                        id: x
                     };
-
-            for (let i = 0; i < 10; i++) {
-                if(i % 2 === 0) {
-                   this.items.push(demoItem);
-                } else {
                     this.items.push(demoItem2);
                 }
             }
         },
         methods: {
+            removeItem(item) {
+                for (let i = 0; i < this.items.length; i+=1) {
+                    if(item.id === this.items[i].id) {
+                    this.items.splice(i, 1)
+                    return
+                    }
+                }
+            },
             goToCheckout() {
                 this.$navigateTo(Checkout)
             },
-
             onItemTap() {
                 this.$navigateTo(Product)
             },
             minusTapped(item) {
+                item.quantity -= 1;
                 if(item.quantity <= 0){
+                    this.removeItem(item)
                     return
                 }
-                item.quantity -= 1;
+                
             },
             plusTapped(item) {
                 item.quantity += 1;
@@ -141,6 +152,10 @@
    label {
        text-align: center;
    } 
+
+   .label-center {
+       vertical-align: center;
+   }
 
    .subtitle {
     //    margin: 6rem;

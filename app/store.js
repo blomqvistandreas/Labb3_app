@@ -5,16 +5,10 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  computed: {
-    // adress() {
-    //   let ip = 'http://84.217.234.101:4000/'
-    //   return ip
-    // },
-  },
   state: {
     cart: [],
     loggedIn: false,
-    adress: 'http://84.217.234.101:4000/'
+    adress: 'localhost:4000' //'http://84.217.234.101:4000/'
   },
   getters: {
     getProductImage: product => {
@@ -23,18 +17,6 @@ export default new Vuex.Store({
       return "hello get image"
       //return (this.state.adress + '/uploads/1.png')
     },
-    priceMultiplier() {
-      //in procent
-      let min = 80;
-
-      // 100 = default
-      let max = 150;
-
-      let random = Math.random() * (+max - +min) + min;
-
-      //return value between 0.8 and 2.5 ∞∞∞ 80 250
-      return random / 100
-    }
   },
   mutations: {
     setLoggedIn(state) {
@@ -47,8 +29,8 @@ export default new Vuex.Store({
       state.productFilter = filter
     },
     emptyCart(state) {
-        state.cart = []
-        return
+        state.cart = [];
+        return;
     },
     removeItem(state, product) {
       for (let i = 0; i < state.cart.length; i+=1) {
