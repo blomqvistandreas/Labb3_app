@@ -1,6 +1,6 @@
 <template>
-  <StackLayout id="card">
-    <Image :src="product.image" stretch="aspectFit" />
+  <StackLayout id="card" @tap="goToProduct">
+    <Image :src="product.image" stretch="aspectFill" />
     <GridLayout columns="*, *" rows="*">
       <Label textWrap="true" height="70" :text="product.name" row="0" col="0"/>
       <Label height="70" :text="product.price" row="0" col="1"/>
@@ -9,21 +9,19 @@
 </template>
 
 <script>
+import Product from './Product.vue'
+
 export default {
-  computed: {
-    productId() {
-      return '/product/'+this.product.id
-    },
-    productImage() {
-      return this.product.image
-    },
-  },
   props: {
     product: {}
   },
   methods: {
-    addToCart() {
-      this.$store.commit('updateCart', this.product)
+    goToProduct() {
+      this.$navigateTo(Product, {
+        props: {
+          productId: this.product.id,
+        }
+      })
     }
   }
 }
@@ -39,10 +37,13 @@ export default {
   }
   Label {
     text-align: center;
-    background-color: burlywood;
+    background-color: #58b368;
   }
   Image {
     object-fit: cover;
+    height: 340;
+    width: 340;
+    background-color: white;
   }
   GridLayout {
     border-top-width: 1;
