@@ -1,31 +1,42 @@
 <template>
     <Page actionBarHidden="false">
       <StackLayout backgroundColor="#3c495e">
-        <TextField :text="textFieldValue" hint="First name"/>
-        <Label class="far" style="font-size: 50em; color: blue" text="&#xf2b9;"></Label>
-        <Label class="fab" style="font-size: 50em; color: black" text="&#xf09b;"></Label>
-        <TextField :text="textFieldValue" hint="Last name" />
-        <Label class="fas" style="font-size: 50em; color: gray" text="&#xf013;"></Label>
-        <TextField :text="textFieldValue" hint="Email"/>
-        <TextField :text="textFieldValue" hint="Phone number" />
-        <Button text="Continue" @tap="goToCheckout"/>
+        <TextField v-model="firstName" hint="First name"/>
+        <Label class="fa" :text="'fa-eye' | fonticon" />
+        <Label class="fa" :text="'fa-heart' | fonticon" />
+        <Label class="fa" :text="'fa-user' | fonticon" />        
+        <TextField v-model="lastName" hint="Last name" />
+        <TextField v-model="mail" hint="Email"/>
+        <TextField v-model="phone" hint="Phone number" />
+        <Button text="Continue" @tap="nextPage"/>
       </StackLayout>
     </Page>
 </template>
 
 <script>
-
 import ShippingDetails from './ShippingDetails.vue';
-
 export default {
+
     data () {
         return {
+          firstName: null,
+          lastName: null,
+          mail: null,
+          phone: null
         };
     },
     methods: {
-        goToCheckout() {
-            this.$navigateTo(ShippingDetails)
+        nextPage() {
+          this.$store.state.details.fname = this.firstName
+          this.$store.state.details.lname = this.lastName
+          this.$store.state.details.mail = this.mail
+          this.$store.state.details.phone = this.phone
+          this.$navigateTo(ShippingDetails)
+
+          console.log(this.$store.state.details.fname)
+          console.log(this.$store.state.details.lname)
         },
+
     }
 }
 </script>
