@@ -144,18 +144,25 @@ export default {
 }
 </script>
 
-<style>
-    ActionBar {
-        background-color: #58b368;
-        color: #ffffff;
-    }
-    #backround {
-      background-color: #454d66
-    }
-    SegmentedBar {
-      background-color: #58b368;
-      color: #ffffff;
-      font-weight: bold;
-      border-color: #58b368;
-    }
+<style lang="scss">
+  $secondary: #009358;
+  $primary: #53ba82;
+  $third: #1c6b48;
+  $white: rgb(246, 246, 246);
+  $black: rgb(50, 50, 50);
+  $background: #454d66;
+
+  ActionBar {
+    background-color: $secondary;
+    color: $white;
+  }
+  #backround {
+    background-color: $background
+  }
+  SegmentedBar {
+    background-color: $secondary;
+    color: $white;
+    font-weight: bold;
+    border-color: $secondary;
+  }
 </style>

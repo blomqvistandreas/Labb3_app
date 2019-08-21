@@ -4,6 +4,8 @@ import store from './store'
 
 import VueDevtools from 'nativescript-vue-devtools'
 
+import './app.scss';
+
 if(TNS_ENV !== 'production') {
   Vue.use(VueDevtools)
 }
@@ -14,3 +16,5 @@ new Vue({
   store,
   render: h => h('frame', [h(App)])
 }).$start()
+
+

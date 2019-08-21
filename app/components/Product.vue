@@ -48,7 +48,13 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    $secondary: #009358;
+    $primary: #53ba82;
+    $third: #1c6b48;
+    $white: rgb(246, 246, 246);
+    $black: rgb(50, 50, 50);
+    $background: #454d66;
 
 Label {
     text-align: center;
@@ -60,15 +66,15 @@ Label {
 }
 
 #Button {
-    background-color: #53ba82;
-    color: #ffffff;
+    background-color: $secondary;
+    color: $white;
     text-justify: auto;    
     text-align: center;
     margin-bottom: 0px;
     margin-right: 5px;
     margin-left: 400px;
     border-style: solid;
-    border-color: black;
+    border-color: $black;
     border-width: 2;
     border-radius: 20;
     
