@@ -1,5 +1,5 @@
 <template>
-    <Page class="page">
+    <Page class="page" id="backround">
         <ActionBar title="YardSale" class="action-bar">
         </ActionBar>
         <GridLayout columns="*" :rows="rows"> 
@@ -39,7 +39,7 @@
             </SegmentedBar>
           </ScrollView>
           <ScrollView ref="scroll" :row="scrollRow" col="0">
-            <StackLayout id="backround">
+            <StackLayout>
               <product-card :product="product" v-for="product in products" :key="product.id"></product-card>
               <GridLayout columns="*, *, *" rows="*">
                   <Button v-if="currentPage!==1" @tap="currentPageDown" text="<" row="0" col="0"></Button>
@@ -146,8 +146,8 @@ export default {
 
 <style>
     ActionBar {
-        background-color: #58b368;
-        color: #ffffff;
+      background-color: #58b368;
+      color: #ffffff;
     }
     #backround {
       background-color: #454d66
@@ -157,5 +157,21 @@ export default {
       color: #ffffff;
       font-weight: bold;
       border-color: #58b368;
+    }
+    Button {
+      background-color: #58b368;
+      color: black;
+      border-width: 1;
+      border-radius: 10;
+      font-weight: bold;
+      margin-left: 20;
+      margin-right: 20;
+      margin-top: 20;
+      margin-bottom: 20;
+      height: 60;
+    }
+    Label {
+      text-align: center;
+      font-weight: bold;
     }
 </style>

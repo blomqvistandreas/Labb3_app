@@ -3,7 +3,7 @@
     <Image :src="product.image" stretch="aspectFill" />
     <GridLayout columns="*, *" rows="*">
       <Label textWrap="true" height="70" :text="product.name" row="0" col="0"/>
-      <Label height="70" :text="product.price" row="0" col="1"/>
+      <Label height="70" :text="'$'+product.price" row="0" col="1"/>
     </GridLayout>
   </StackLayout>
 </template>
@@ -30,6 +30,7 @@ export default {
 <style scoped>
   #card {
     margin: 20;
+    margin-bottom: 0;
     border-style: solid;
     border-color: black;
     border-width: 1;
