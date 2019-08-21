@@ -5,12 +5,12 @@
         </ActionBar>
 
         <StackLayout >
-            <Image :src="product.image" stretch="aspectFill" height="300" width="100%" />
+            <Image :src="product.image" backgroundColor="white" stretch="aspectFill" height="300" width="100%" />
                 <StackLayout orientation="horizontal"  rows="1">
-                    <Label id="Name" :text="product.name" height="70" width="50%" />
+                    <Label id="Name" textWrap="true" :text="product.name" height="70" width="50%" />
                     <Label :text="product.price" height="70" width="50%" />
                 </StackLayout>
-            <Label id="Description" backtextWrap=true :text="product.description" height="150" width="100%"/>
+            <Label id="Description" textWrap="true" :text="product.description" height="150" width="100%"/>
             <Button id="Button" @tap="addToCart" text="Add to Cart"></Button>
         </StackLayout>
     </Page>
@@ -31,7 +31,7 @@ export default {
     },
     methods: {
         addToCart() {
-        this.$store.commit('updateCart', this.product)
+            this.$store.commit('updateCart', this.product)
         },
         getProduct() {
         fetch('http://localhost:5000/api/product/'+this.productId)
@@ -74,7 +74,7 @@ Label {
     
 }
 StackLayout {
-    background-color: #454d66
+
 }
 
 </style>

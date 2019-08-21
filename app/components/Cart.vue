@@ -54,6 +54,7 @@
                     this.items.push(demoItem2);
                 }
             }
+            this.items = this.$store.state.cart;
         },
         methods: {
             removeItem(item) {
@@ -143,7 +144,7 @@
 
     Button {
         background-color: $primary;
-        border-radius: 5px;
+        border-radius: 5;
         margin: 6rem;
         font-size: 25%;
         color: $white;
