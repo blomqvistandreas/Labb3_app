@@ -14,7 +14,8 @@ export default new Vuex.Store({
       country: null,
       zipCode: null,
       city: null,
-      address: null
+      address: null,
+    },
     cart: [],
     loggedIn: false,
     adress: 'localhost:4000' //'http://84.217.234.101:4000/'
