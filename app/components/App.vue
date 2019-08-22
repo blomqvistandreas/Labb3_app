@@ -1,8 +1,9 @@
 <template>
-    <Page class="page">
+    <Page class="page" id="backround">
         <ActionBar title="YardSale" class="action-bar">
         </ActionBar>
         <GridLayout columns="*" :rows="rows"> 
+          <!-- testat vit background? -->
           <SegmentedBar row="0" col="0" v-model="activeTab" @selectedIndexChange="tabChanged" selectedBackgroundColor="#009975">
             <SegmentedBarItem title="All" />
             <SegmentedBarItem title="Popular" />
@@ -39,7 +40,7 @@
             </SegmentedBar>
           </ScrollView>
           <ScrollView ref="scroll" :row="scrollRow" col="0">
-            <StackLayout id="backround">
+            <StackLayout>
               <product-card :product="product" v-for="product in products" :key="product.id"></product-card>
               <GridLayout columns="*, *, *" rows="*">
                   <Button v-if="currentPage!==1" @tap="currentPageDown" text="<" row="0" col="0"></Button>
@@ -50,7 +51,7 @@
           </ScrollView>
           <StackLayout :row="stackRow" col="0">
             <Button @tap="goToCart" text="Cart"></Button>
-            <Button @tap="goToCheckout" text="Checkout"></Button>
+            <Button @tap="goToCheckout" text="Checkout"></Button>          
             <Button @tap="goToProduct" text="Product"></Button>
           </StackLayout>
         </GridLayout>
@@ -67,7 +68,7 @@ export default {
     created() {
         this.getProductsFromDB(1)
     },
-    components: {
+    components: { 
       ProductCard
     },
     data () {
@@ -146,7 +147,7 @@ export default {
 
 <style lang="scss">
   $secondary: #009358;
-  $primary: #53ba82;
+  $primary: #58b368;
   $third: #1c6b48;
   $white: rgb(246, 246, 246);
   $black: rgb(50, 50, 50);
@@ -165,4 +166,21 @@ export default {
     font-weight: bold;
     border-color: $secondary;
   }
+
+  Button {
+      background-color: $primary;
+      color: $black;
+      border-width: 1;
+      border-radius: 10;
+      font-weight: bold;
+      margin-left: 20;
+      margin-right: 20;
+      margin-top: 20;
+      margin-bottom: 20;
+      height: 60;
+    }
+    Label {
+      text-align: center;
+      font-weight: bold;
+    }
 </style>

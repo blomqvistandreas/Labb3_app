@@ -8,9 +8,19 @@ export default new Vuex.Store({
   state: {
     cart: [
       {
-        price: 300, name: "hello", quantity: 3, id: "afere"
+        price: 300, name: "hello", quantity: 3, id: "68"
       }
     ],
+    details: {
+      fname: null,
+      lname: null,
+      mail: null,
+      phone: null,
+      country: null,
+      zipCode: null,
+      city: null,
+      address: null,
+    },
     loggedIn: false,
     adress: 'localhost:4000' //'http://84.217.234.101:4000/'
   },
@@ -22,6 +32,7 @@ export default new Vuex.Store({
       //return (this.state.adress + '/uploads/1.png')
     },
   },
+
   mutations: {
     setProducts(state, products){
       state.products = products
