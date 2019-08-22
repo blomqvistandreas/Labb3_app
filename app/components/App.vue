@@ -1,6 +1,9 @@
 <template>
     <Page class="page" id="backround">
         <ActionBar title="YardSale" class="action-bar">
+          <ActionItem @tap="goToCart" text="Cart"
+          ios.position="right"
+          android.position="actionBar" />
         </ActionBar>
         <GridLayout columns="*" :rows="rows"> 
           <SegmentedBar row="0" col="0" v-model="activeTab" @selectedIndexChange="tabChanged" selectedBackgroundColor="#009975">
