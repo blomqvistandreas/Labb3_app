@@ -30,7 +30,8 @@ export default {
 <style scoped>
   #card {
     margin: 20;
-    margin-bottom: 0;
+    margin-bottom: 10;
+    margin-top: 10;
     border-style: solid;
     border-color: black;
     border-width: 1;
