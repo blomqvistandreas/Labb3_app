@@ -44,7 +44,7 @@
           <ScrollView ref="scroll" :row="scrollRow" col="0">
             <StackLayout>
               <product-card :product="product" v-for="product in products" :key="product.id"></product-card>
-              <GridLayout columns="*, *, *" rows="*">
+              <GridLayout v-if="totalCount > productsPerPage" columns="*, *, *" rows="*">
                   <Button v-if="currentPage!==1" @tap="currentPageDown" text="<" row="0" col="0"></Button>
                   <Label :text="currentPage+'/'+pages" row="0" col="1"/>
                   <Button v-if="currentPage < totalCount/productsPerPage" @tap="currentPageUp" text=">" row="0" col="2"></Button>
@@ -108,6 +108,10 @@ export default {
         },
         tabChanged() {
           console.log('tabchanged')
+          //Scroll to top of grid
+          let scroll = this.$refs.scroll.nativeView
+          scroll.scrollToVerticalOffset(0, true)
+          
           if (this.activeTab===2) {
             this.rows = '30, 30, *, 90'
             this.scrollRow = 2
@@ -121,10 +125,11 @@ export default {
           this.getProductsFromDB(this.currentPage)
         },
         pageChanged(payload) {
-          this.getProductsFromDB(payload)
           //Scroll to top of grid
           let scroll = this.$refs.scroll.nativeView
           scroll.scrollToVerticalOffset(0, true)
+
+          this.getProductsFromDB(payload)
         },
         currentPageDown() {
           this.currentPage = this.currentPage - 1
