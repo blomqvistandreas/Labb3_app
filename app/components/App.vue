@@ -1,6 +1,9 @@
 <template>
     <Page class="page" id="backround">
         <ActionBar title="YardSale" class="action-bar">
+          <ActionItem @tap="goToCart" text="Cart"
+          ios.position="right"
+          android.position="actionBar" />
         </ActionBar>
         <GridLayout columns="*" :rows="rows"> 
           <!-- testat vit background? -->
@@ -39,21 +42,16 @@
               <SegmentedBarItem title="Z"/>
             </SegmentedBar>
           </ScrollView>
-          <ScrollView ref="scroll" :row="scrollRow" col="0">
+          <ScrollView ref="scroll" row="2" col="0">
             <StackLayout>
               <product-card :product="product" v-for="product in products" :key="product.id"></product-card>
-              <GridLayout columns="*, *, *" rows="*">
+              <GridLayout v-if="totalCount > productsPerPage" columns="*, *, *" rows="*">
                   <Button v-if="currentPage!==1" @tap="currentPageDown" text="<" row="0" col="0"></Button>
                   <Label :text="currentPage+'/'+pages" row="0" col="1"/>
                   <Button v-if="currentPage < totalCount/productsPerPage" @tap="currentPageUp" text=">" row="0" col="2"></Button>
               </GridLayout>
             </StackLayout>
           </ScrollView>
-          <StackLayout :row="stackRow" col="0">
-            <Button @tap="goToCart" text="Cart"></Button>
-            <Button @tap="goToCheckout" text="Checkout"></Button>          
-            <Button @tap="goToProduct" text="Product"></Button>
-          </StackLayout>
         </GridLayout>
     </Page>
 </template>
@@ -79,7 +77,7 @@ export default {
           productsPerPage: 16,
           products: [],
           totalCount: 0,
-          rows: '30, *, 90',
+          rows: '30, *',
           scrollRow: 1,
           stackRow: 2
         };
@@ -106,23 +104,24 @@ export default {
         },
         tabChanged() {
           console.log('tabchanged')
+          //Scroll to top of grid
+          let scroll = this.$refs.scroll.nativeView
+          scroll.scrollToVerticalOffset(0, true)
+
           if (this.activeTab===2) {
-            this.rows = '30, 30, *, 90'
-            this.scrollRow = 2
-            this.stackRow = 3
+            this.rows = '30, 30, *'
           } else {
-            this.rows = '30, *, 90'
-            this.scrollRow = 1
-            this.stackRow = 2
+            this.rows = '30, *'
           }
           this.currentPage = 1
           this.getProductsFromDB(this.currentPage)
         },
         pageChanged(payload) {
-          this.getProductsFromDB(payload)
           //Scroll to top of grid
           let scroll = this.$refs.scroll.nativeView
           scroll.scrollToVerticalOffset(0, true)
+
+          this.getProductsFromDB(payload)
         },
         currentPageDown() {
           this.currentPage = this.currentPage - 1
@@ -175,8 +174,7 @@ export default {
       font-weight: bold;
       margin-left: 20;
       margin-right: 20;
-      margin-top: 20;
-      margin-bottom: 20;
+      margin-bottom: 10;
       height: 60;
     }
     Label {
