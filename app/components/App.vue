@@ -5,8 +5,7 @@
           ios.position="right"
           android.position="actionBar" />
         </ActionBar>
-        <GridLayout columns="*" :rows="rows"> 
-          <!-- testat vit background? -->
+        <GridLayout columns="*" :rows="rows">
           <SegmentedBar row="0" col="0" v-model="activeTab" @selectedIndexChange="tabChanged" selectedBackgroundColor="#009975">
             <SegmentedBarItem title="All" />
             <SegmentedBarItem title="Popular" />
@@ -66,7 +65,7 @@ export default {
     created() {
         this.getProductsFromDB(1)
     },
-    components: { 
+    components: {
       ProductCard
     },
     data () {

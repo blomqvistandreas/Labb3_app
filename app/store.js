@@ -31,10 +31,10 @@ export default new Vuex.Store({
       lname: null,
       mail: null,
       phone: null,
-      country: null,
+      address: null,
       zipCode: null,
       city: null,
-      address: null,
+      country: null
     },
     loggedIn: false,
     adress: 'localhost:4000' //'http://84.217.234.101:4000/'
@@ -45,6 +45,9 @@ export default new Vuex.Store({
       //return this.state.adress +'/uploads/' + product.image
       return "hello get image";
       //return (this.state.adress + '/uploads/1.png')
+    },
+    getCheckoutDetails() {
+      return details
     },
   },
 
@@ -68,7 +71,7 @@ export default new Vuex.Store({
       }
     },
     decreseItemInCart(state, product) {
-      
+
       //add quantity if allready in cart
       for (let i = 0; i < state.cart.length; i+= 1) {
         const cartProduct = state.cart[i];
