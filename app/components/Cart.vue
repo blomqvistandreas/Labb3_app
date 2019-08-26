@@ -77,17 +77,16 @@
 
 
 <style lang="scss" scoped>
+    $primary: #58b368;
     $secondary: #009358;
-    $primary: #53ba82;
-    $third: #1c6b48;
     $white: rgb(246, 246, 246);
     $black: rgb(50, 50, 50);
     $background: #454d66;
     $find: yellow;
 
     ActionBar {
-    background-color: #58b368;
-    color: white;
+    background-color: $primary;
+    color: $white;
   }
 
     .page {
