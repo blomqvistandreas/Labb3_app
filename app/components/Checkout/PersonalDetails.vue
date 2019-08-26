@@ -40,6 +40,10 @@ export default {
 #ffffff
 -->
 <style scoped>
+ActionBar {
+  background-color: #58b368;
+  color: white;
+}
 TextField {
   background-color: #289062;
   margin-left: 30;
