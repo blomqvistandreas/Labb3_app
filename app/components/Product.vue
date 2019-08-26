@@ -1,18 +1,18 @@
 <template>
     <Page actionBarHidden="false">
-
-        <ActionBar title="Product Name">
-        </ActionBar>
-
-        <StackLayout >
-            <Image :src="product.image" backgroundColor="white" stretch="aspectFill" height="300" width="100%" />
-                <StackLayout orientation="horizontal"  rows="1">
-                    <Label id="Name" textWrap="true" :text="product.name" height="70" width="50%" />
-                    <Label :text="product.price" height="70" width="50%" />
-                </StackLayout>
-            <Label id="Description" textWrap="true" :text="product.description" height="150" width="100%"/>
-            <Button id="Button" @tap="addToCart" text="Add to Cart"></Button>
-        </StackLayout>
+        <GridLayout columns="*" rows="*, 50, 50">
+            <StackLayout row="0">
+                <Image :src="product.image" backgroundColor="white" stretch="aspectFill" height="250" width="100%" />
+                <Label id="Name" textWrap="true" :text="product.name" width="100%" />
+                <ScrollView orientation="vertical">
+                    <Label id="Description" textWrap="true" :text="product.description"/>
+                </ScrollView>
+                <Label id="subtitle" :text="'Price: $' + product.price"/>
+                <Button id="Button" @tap="addToCart" text="Add to Cart"></Button>
+            </StackLayout>
+            <Label row="1" id="subtitle" :text="'Price: $' + product.price"/>
+            <Button row="2" id="Button" @tap="addToCart" text="Add to Cart"></Button>
+        </GridLayout>
     </Page>
 </template>
 
@@ -44,37 +44,42 @@ export default {
         }
     }
 }
-
-
 </script>
 
 <style scoped>
 
-Label {
+#Name {
+    font-size: 24px;
+    border-bottom: 1rem;
     text-align: center;
-
+    border-bottom-width: 1rem;
+    padding: 4rem;
+    margin: 10px;
 }
     
 #Description {
-    margin-top: -60px;    
+    text-align: start;
+    margin: 10;
+    margin-bottom: 10px;
 }
 
 #Button {
-    background-color: #53ba82;
-    color: #ffffff;
-    text-justify: auto;    
-    text-align: center;
-    margin-bottom: 0px;
-    margin-right: 5px;
-    margin-left: 400px;
-    border-style: solid;
+    background-color: #009358;
+    border-radius: 5;
+    margin: 10px;
+    font-size: 24px;
+    color: white;
+    margin-bottom: 10;
+}
+ #subtitle {
+    margin: 5px;
+    font-size: 24px;
+    color: black;
+    border-top-width: 1rem;
+    border-bottom-width: 1rem;
+    padding: 4rem;
     border-color: black;
-    border-width: 2;
-    border-radius: 20;
-    
-}
-StackLayout {
-
-}
+    text-align: center  
+   }
 
 </style>
