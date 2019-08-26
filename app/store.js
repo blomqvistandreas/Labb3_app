@@ -9,6 +9,21 @@ export default new Vuex.Store({
     cart: [
       {
         price: 300, name: "hello", quantity: 3, id: "68"
+      },
+      {
+        price: 300, name: "hello", quantity: 3, id: "28"
+      },
+      {
+        price: 300, name: "hello", quantity: 3, id: "18"
+      },
+      {
+        price: 300, name: "hello", quantity: 3, id: "13"
+      },
+      {
+        price: 300, name: "hello", quantity: 3, id: "15"
+      },
+      {
+        price: 300, name: "hello", quantity: 3, id: "14"
       }
     ],
     details: {

@@ -1,7 +1,7 @@
 <template>
     <Page actionBarHidden="false">
 
-        <ActionBar title="Product Name">
+        <ActionBar :title="product.name">
         </ActionBar>
 
         <StackLayout >
