@@ -1,6 +1,8 @@
 <template>
   <!-- PaymentDetails -->
     <Page actionBarHidden="false">
+      <ActionBar title="">
+      </ActionBar>
       <StackLayout backgroundColor="#3c495e">
         <TextField hint="Card number"/>
         <TextField hint="Expiration date"/>
@@ -64,14 +66,14 @@ TextField {
   outline: inherit;
 }
 Button {
-  background-color: #ffffff;
-  text-decoration-color: #289062;
-  margin-left: 100;
-  margin-right: 100;
-  margin-top: 50;
-  padding: 15;
-  border-radius: 30;
-  text-align: center;
-  outline: inherit;
+  background-color: #58b368;
+  color: black;
+  border-width: 1;
+  border-radius: 10;
+  font-weight: bold;
+  margin-left: 20;
+  margin-right: 20;
+  margin-bottom: 10;
+  height: 60;
 }
 </style>

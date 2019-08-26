@@ -1,6 +1,8 @@
 <template>
   <!-- ShippingDetails -->
     <Page actionBarHidden="false">
+      <ActionBar title="">
+      </ActionBar>
       <StackLayout backgroundColor="#3c495e">
         <TextField v-model="country" hint="Country"/>
         <TextField v-model="zipCode" hint="ZIP Code" />
@@ -53,14 +55,14 @@ TextField {
   outline: inherit;
 }
 Button {
-  background-color: #ffffff;
-  text-decoration-color: #289062;
-  margin-left: 120;
-  margin-right: 120;
-  margin-top: 50;
-  padding: 15;
-  border-radius: 30;
-  text-align: center;
-  outline: inherit;
+  background-color: #58b368;
+  color: black;
+  border-width: 1;
+  border-radius: 10;
+  font-weight: bold;
+  margin-left: 20;
+  margin-right: 20;
+  margin-bottom: 10;
+  height: 60;
 }
 </style>
