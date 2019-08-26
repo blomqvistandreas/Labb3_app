@@ -1,6 +1,6 @@
 <template>
   <!-- PaymentDetails -->
-    <Page actionBarHidden="false" title="Hello">
+    <Page actionBarHidden="false">
       <StackLayout backgroundColor="#3c495e">
         <TextField hint="Card number"/>
         <TextField hint="Expiration date"/>
@@ -35,7 +35,7 @@ export default {
               this.$navigateTo(Home)
             )
             alert({
-              title: "Thank you for your order!",
+              title: "Thank you!",
               message: "Your order has been placed and is being processed.",
               okButtonText: "Done"
             }).then(() => {
@@ -48,6 +48,10 @@ export default {
 </script>
 
 <style scoped>
+ActionBar {
+  background-color: #58b368;
+  color: white;
+}
 TextField {
   background-color: #289062;
   text-decoration-color: #289062;
