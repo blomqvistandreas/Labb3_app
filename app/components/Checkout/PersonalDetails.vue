@@ -32,11 +32,8 @@ export default {
           this.$store.state.customer.phone = this.phone
           this.$navigateTo(ShippingDetails, {
             transition: {
-
-              // name: 'slideLeft',
-              //
-              // duration: 2000,
-
+              name: 'slideLeft',
+              duration: 1250,
             },
           })
         },

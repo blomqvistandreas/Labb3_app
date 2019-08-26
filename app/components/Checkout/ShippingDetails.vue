@@ -32,11 +32,8 @@ export default {
           this.$store.state.customer.address = this.address
           this.$navigateTo(PaymentDetails, {
             transition: {
-
-              // name: 'slideLeft',
-              //
-              // duration: 2000,
-
+              name: 'slideLeft',
+              duration: 1250,
             },
           })
         },

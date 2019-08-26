@@ -33,6 +33,10 @@ export default {
               method: 'POST'
             }).then(
               this.$navigateTo(Home, {
+                transition: {
+                  name: 'fade',
+                  duration: 3000,
+                },
                 clearHistory: true
               })
             )
