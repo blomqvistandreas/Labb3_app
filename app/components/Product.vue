@@ -1,18 +1,18 @@
 <template>
     <Page actionBarHidden="false">
-
-        <ActionBar :title="product.name">
+        <ActionBar title="">
         </ActionBar>
-
-        <StackLayout >
-            <Image :src="product.image" backgroundColor="white" stretch="aspectFill" height="300" width="100%" />
-                <StackLayout orientation="horizontal"  rows="1">
-                    <Label id="Name" textWrap="true" :text="product.name" height="70" width="50%" />
-                    <Label :text="product.price" height="70" width="50%" />
-                </StackLayout>
-            <Label id="Description" textWrap="true" :text="product.description" height="150" width="100%"/>
-            <Button id="Button" @tap="addToCart" text="Add to Cart"></Button>
-        </StackLayout>
+        <GridLayout columns="*" rows="*, 50, 50">
+            <StackLayout row="0">
+                <Image :src="product.image" backgroundColor="white" stretch="aspectFill" height="250" width="100%" />
+                <Label id="Name" textWrap="true" :text="product.name" width="100%" />
+                <ScrollView orientation="vertical">
+                    <Label id="Description" textWrap="true" :text="product.description"/>
+                </ScrollView>
+            </StackLayout>
+            <Label row="1" id="subtitle" :text="'Price: $' + product.price"/>
+            <Button row="2" id="Button" @tap="addToCart" text="Add to Cart"></Button>
+        </GridLayout>
     </Page>
 </template>
 
@@ -32,6 +32,12 @@ export default {
     methods: {
         addToCart() {
             this.$store.commit('updateCart', this.product)
+        alert({
+            title: "Added to cart",
+            okButtonText: "OK"
+        }).then(() => {
+            console.log("Alert dialog closed");
+        }); 
         },
         getProduct() {
         fetch('http://localhost:5000/api/product/'+this.productId)
@@ -44,43 +50,48 @@ export default {
         }
     }
 }
-
-
 </script>
 
-<style lang="scss" scoped>
-    $secondary: #009358;
-    $primary: #53ba82;
-    $third: #1c6b48;
-    $white: rgb(246, 246, 246);
-    $black: rgb(50, 50, 50);
-    $background: #454d66;
+<style scoped>
+ 
+ActionBar {
+    background-color: #58b368;
+    color: white;
+}
 
-Label {
+#Name {
+    font-size: 24px;
+    border-bottom: 1rem;
     text-align: center;
-
+    border-bottom-width: 1rem;
+    padding: 4rem;
+    margin: 10px;
 }
     
 #Description {
-    margin-top: -60px;    
+    text-align: start;
+    margin: 10;
+    margin-bottom: 10px;
 }
 
 #Button {
-    background-color: $secondary;
-    color: $white;
-    text-justify: auto;    
-    text-align: center;
-    margin-bottom: 0px;
-    margin-right: 5px;
-    margin-left: 400px;
-    border-style: solid;
-    border-color: $black;
-    border-width: 2;
-    border-radius: 20;
-    
+    background-color: #58b368;
+    border-radius: 5;
+    margin: 6rem;
+    font-size: 25%;
+    color: white;
+    margin-bottom: 10px;
 }
-StackLayout {
 
-}
+ #subtitle {
+    margin-top: 7;
+    font-size: 24px;
+    color: black;
+    border-top-width: 1rem;
+    border-bottom-width: 1rem;
+    padding: 4rem;
+    border-color: black;
+    text-align: center  
+   }
 
 </style>
