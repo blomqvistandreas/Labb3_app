@@ -6,6 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    cart: [],
     customer: {
       fname: null,
       lname: null,
@@ -23,7 +24,7 @@ export default new Vuex.Store({
     getProductImage: product => {
       if(!product) {return}
       //return this.state.adress +'/uploads/' + product.image
-      return "hello get image"
+      return "hello get image";
       //return (this.state.adress + '/uploads/1.png')
     },
     getCheckoutDetails() {
@@ -32,9 +33,6 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    setLoggedIn(state) {
-      state.loggedIn = true
-    },
     setProducts(state, products){
       state.products = products
     },
@@ -96,32 +94,32 @@ export default new Vuex.Store({
       state.cart.push(product)
     }
   },
-  actions: {
-    getProductsFromDB(context){
-      fetch(this.state.adress +'api/products/'
-      /*+context.state.productFilter.tab+'/'+context.state.productFilter.letter*/)
-      .then(response => response.json())
-      .then(result => {
+  // actions: {
+  //   getProductsFromDB(context){
+  //     fetch(this.state.adress +'api/products/'
+  //     /*+context.state.productFilter.tab+'/'+context.state.productFilter.letter*/)
+  //     .then(response => response.json())
+  //     .then(result => {
 
-        //TODO: testing with price multiplier
-        result.forEach(product => {
-          let multiplier = context.getters.priceMultiplier
-          product.price *= multiplier
-          product.price /= 10
-          product.price = Math.round(product.price)
-          product.price *= 10
+  //       //TODO: testing with price multiplier
+  //       result.forEach(product => {
+  //         let multiplier = context.getters.priceMultiplier
+  //         product.price *= multiplier
+  //         product.price /= 10
+  //         product.price = Math.round(product.price)
+  //         product.price *= 10
 
-          //console.log(product);
+  //         //console.log(product);
 
-          //set image
-          //product.image = 'src/assets/products/' +product.id +'.png'
-        });
+  //         //set image
+  //         //product.image = 'src/assets/products/' +product.id +'.png'
+  //       });
 
-        //set store products
-        context.commit('setProducts', result)
-      }).catch(error => {
-          console.log(error.message)
-      })
-    }
-  },
+  //       //set store products
+  //       context.commit('setProducts', result)
+  //     }).catch(error => {
+  //         console.log(error.message)
+  //     })
+  //   }
+  //},
 });

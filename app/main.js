@@ -32,3 +32,5 @@ new Vue({
   store,
   render: h => h('frame', [h(App)])
 }).$start()
+
+
