@@ -1,18 +1,19 @@
 <template>
+  <!-- PaymentDetails -->
     <Page actionBarHidden="false" title="Hello">
       <StackLayout backgroundColor="#3c495e">
-        <TextField :text="textFieldValue" hint="Card number"/>
-        <label :text="textFieldValue" hint="Month(SELECT IF POSSIBLE) / YEAR" />
-        <DatePicker :date="someDate" />
-        <TextField :text="textFieldValue" hint="Card number"/>
-        <TextField :text="textFieldValue" hint="Security Code" />
-        <Button text="Button" @tap="confirmOrder" />
+        <TextField hint="Card number"/>
+        <TextField hint="Expiration date"/>
+        <TextField hint="Card number"/>
+        <TextField hint="Security Code" />
+        <Button text="Send my order" @tap="confirmOrder" />
 
       </StackLayout>
     </Page>
 </template>
 
 <script>
+import Home from '../App.vue';
 export default {
     data () {
         return {
@@ -20,27 +21,27 @@ export default {
     },
     methods: {
         confirmOrder() {
-          // TODO match store.js
-          this.$store.state.details.fname = this.firstName
-          this.$store.state.details.lname = this.lastName
-          this.$store.state.details.mail = this.mail
-          this.$store.state.details.phone = this.phone
-          alert({
-            title: "Thank you!",
-            message: "Your order is complete",
-            okButtonText: "Continue"
-          }).then(() => {
-            console.log("Return to homepage");
-          });
-        },
-        newCustomer() {
+          let orderObj = {
+            customer: this.$store.state.customer,
+            products: this.$store.state.cart
+          }
           fetch('http://localhost:5000/api/order', {
-            body: JSON.stringify(this.$store.state.details),
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            method: 'POST'
-          })
+              body: JSON.stringify(orderObj),
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              method: 'POST'
+            }).then(
+              this.$navigateTo(Home)
+            )
+            alert({
+              title: "Thank you for your order!",
+              message: "Your order has been placed and is being processed.",
+              okButtonText: "Done"
+            }).then(() => {
+              console.log("Returning...");
+            });
+
         }
     }
 }
@@ -61,8 +62,8 @@ TextField {
 Button {
   background-color: #ffffff;
   text-decoration-color: #289062;
-  margin-left: 120;
-  margin-right: 120;
+  margin-left: 100;
+  margin-right: 100;
   margin-top: 50;
   padding: 15;
   border-radius: 30;

@@ -2,29 +2,24 @@
     <Page actionBarHidden="false" id="background">
         <ActionBar title="Cart">
         </ActionBar>
-    <StackLayout class="page">
-        <!-- <Label class="subtitle" text="Upgrade your lifestyle"/> -->
-        <!-- <SegmentedBar row="0" col="0">
-            <SegmentedBarItem title="Image" />
-            <SegmentedBarItem title="Name" />
-            <SegmentedBarItem title="Price" />
-            <SegmentedBarItem title="Quantity" />
-          </SegmentedBar> -->
-        <ListView height="80%" for="item in items" @itemTap="onItemTap">
+        <GridLayout columns="*" rows="*, 70, 70"> 
+        <ListView row="0" for="item in items" @itemTap="onItemTap">
             <v-template>
-               <FlexboxLayout justifyContent="space-around" class="cell" height="70">
-                    <Image :src="item.image" stretch="aspectFit" width="70" />
-                    <Label class="vcenter" width="22%" :text="item.name"/>
-                    <Label class="vcenter" width="22%" :text="item.price"/>
-                    <Button class="cell-button" width="11%" height="50" text="-" @tap="minusTapped(item)"/>
-                    <Label class="vcenter" width="11%" :text="item.quantity"/>
-                    <Button class="cell-button" width="11%" text="+" height="30" @tap="plusTapped(item)"/>
-                </FlexboxLayout>
+                <StackLayout orientation="horizontal">
+                    <Image width="16%" :src="item.image" stretch="aspectFit" />
+                    <Label width="16%" class="vcenter"  :text="item.name"/>
+                    <Label width="16%" class="vcenter"  :text="item.price"/>
+                    <GridLayout width="50%" columns="*,*,*" rows="*,*,*"> 
+                        <Button col="0" row="1" class="cell-button" height="25" text="-" @tap="minusTapped(item)"/>
+                        <Label col="1" row="1" class="vcenter"  :text="item.quantity"/>
+                        <Button col="2" row="1" class="cell-button" height="25" text="+" @tap="plusTapped(item)"/>
+                    </GridLayout>
+                </StackLayout>
             </v-template>
         </ListView> 
-        <label class="subtitle" :text="'Total: $' + getTotalPrice() "/>
-        <button text="Go to checkout" @tap="goToCheckout()"/>
-    </StackLayout>
+        <label row="1" class="subtitle" :text="'Total: $' + getTotalPrice() "/>
+        <button row="2" text="Go to checkout" @tap="goToCheckout()"/>
+        </GridLayout>
     </Page>
 </template>
 
@@ -35,28 +30,6 @@
     export default { 
         name: "Cart",
         created() {
-            for (let i = 0; i < 10; i++) {
-                let x = i;
-                if(i % 2 === 0) {
-                    let demoItem = {
-                        name:"Yacht",
-                        price:"6000", 
-                        quantity: 1,
-                        image: "~/assets/images/yacht.png",
-                        id: x
-                    };
-                   this.items.push(demoItem);
-                } else {
-                    let demoItem2 = {
-                        name:"Super frog",
-                        price:"6000", 
-                        quantity: 1,
-                        image: "~/assets/images/frog.jpg",
-                        id: x
-                    };
-                    this.items.push(demoItem2);
-                }
-            }
             this.items = this.$store.state.cart;
         },
         methods: {
@@ -111,6 +84,11 @@
     $black: rgb(50, 50, 50);
     $background: #454d66;
     $find: yellow;
+
+    ActionBar {
+    background-color: #58b368;
+    color: white;
+  }
 
     .page {
         background-color: $white;

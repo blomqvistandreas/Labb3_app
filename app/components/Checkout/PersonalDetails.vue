@@ -1,10 +1,8 @@
 <template>
+  <!-- PersonalDetails -->
     <Page actionBarHidden="false">
       <StackLayout backgroundColor="#3c495e">
         <TextField v-model="firstName" hint="First name"/>
-        <Label class="fa" :text="'fa-eye' | fonticon" />
-        <Label class="fa" :text="'fa-heart' | fonticon" />
-        <Label class="fa" :text="'fa-user' | fonticon" />        
         <TextField v-model="lastName" hint="Last name" />
         <TextField v-model="mail" hint="Email"/>
         <TextField v-model="phone" hint="Phone number" />
@@ -27,24 +25,23 @@ export default {
     },
     methods: {
         nextPage() {
-          this.$store.state.details.fname = this.firstName
-          this.$store.state.details.lname = this.lastName
-          this.$store.state.details.mail = this.mail
-          this.$store.state.details.phone = this.phone
+          this.$store.state.customer.fname = this.firstName
+          this.$store.state.customer.lname = this.lastName
+          this.$store.state.customer.mail = this.mail
+          this.$store.state.customer.phone = this.phone
           this.$navigateTo(ShippingDetails)
-
-          console.log(this.$store.state.details.fname)
-          console.log(this.$store.state.details.lname)
         },
-
     }
 }
 </script>
 
+<!--
+#58b368
+#ffffff
+-->
 <style scoped>
 TextField {
   background-color: #289062;
-  text-decoration-color: #289062;
   margin-left: 30;
   margin-right: 30;
   margin-top: 50;

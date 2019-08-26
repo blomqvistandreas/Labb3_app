@@ -6,20 +6,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    cart: [
-      {
-        price: 300, name: "hello", quantity: 3, id: "68"
-      }
-    ],
+    cart: [],
     details: {
       fname: null,
       lname: null,
       mail: null,
       phone: null,
-      country: null,
+      address: null,
       zipCode: null,
       city: null,
-      address: null,
+      country: null
     },
     loggedIn: false,
     adress: 'localhost:4000' //'http://84.217.234.101:4000/'
@@ -30,6 +26,9 @@ export default new Vuex.Store({
       //return this.state.adress +'/uploads/' + product.image
       return "hello get image";
       //return (this.state.adress + '/uploads/1.png')
+    },
+    getCheckoutDetails() {
+      return details
     },
   },
 
@@ -53,7 +52,7 @@ export default new Vuex.Store({
       }
     },
     decreseItemInCart(state, product) {
-      
+
       //add quantity if allready in cart
       for (let i = 0; i < state.cart.length; i+= 1) {
         const cartProduct = state.cart[i];
@@ -95,32 +94,4 @@ export default new Vuex.Store({
       state.cart.push(product)
     }
   },
-  // actions: {
-  //   getProductsFromDB(context){
-  //     fetch(this.state.adress +'api/products/'
-  //     /*+context.state.productFilter.tab+'/'+context.state.productFilter.letter*/)
-  //     .then(response => response.json())
-  //     .then(result => {
-
-  //       //TODO: testing with price multiplier
-  //       result.forEach(product => {
-  //         let multiplier = context.getters.priceMultiplier
-  //         product.price *= multiplier
-  //         product.price /= 10
-  //         product.price = Math.round(product.price)
-  //         product.price *= 10
-
-  //         //console.log(product);
-
-  //         //set image
-  //         //product.image = 'src/assets/products/' +product.id +'.png'
-  //       });
-
-  //       //set store products
-  //       context.commit('setProducts', result)
-  //     }).catch(error => {
-  //         console.log(error.message)
-  //     })
-  //   }
-  //},
 });
