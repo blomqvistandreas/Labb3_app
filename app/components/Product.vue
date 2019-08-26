@@ -1,5 +1,7 @@
 <template>
     <Page actionBarHidden="false">
+        <ActionBar title="">
+        </ActionBar>
         <GridLayout columns="*" rows="*, 50, 50">
             <StackLayout row="0">
                 <Image :src="product.image" backgroundColor="white" stretch="aspectFill" height="250" width="100%" />
@@ -30,6 +32,12 @@ export default {
     methods: {
         addToCart() {
             this.$store.commit('updateCart', this.product)
+        alert({
+            title: "Added to cart",
+            okButtonText: "OK"
+        }).then(() => {
+            console.log("Alert dialog closed");
+        }); 
         },
         getProduct() {
         fetch('http://localhost:5000/api/product/'+this.productId)
@@ -46,6 +54,10 @@ export default {
 
 <style scoped>
  
+ActionBar {
+    background-color: #58b368;
+    color: white;
+}
 
 #Name {
     font-size: 24px;
@@ -65,13 +77,14 @@ export default {
 #Button {
     background-color: #58b368;
     border-radius: 5;
-    margin: 10px;
-    font-size: 24px;
+    margin: 6rem;
+    font-size: 25%;
     color: white;
-    margin-bottom: 10;
+    margin-bottom: 10px;
 }
+
  #subtitle {
-    margin: 5px;
+    margin-top: 7;
     font-size: 24px;
     color: black;
     border-top-width: 1rem;
