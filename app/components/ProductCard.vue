@@ -37,14 +37,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-    $secondary: #009358;
-    $primary: #53ba82;
-    $third: #1c6b48;
-    $white: rgb(246, 246, 246);
-    $black: rgb(50, 50, 50);
-    $background: #454d66;
-
+<style scoped>
   #card {
     margin: 20;
     margin-bottom: 10;

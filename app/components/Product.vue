@@ -7,8 +7,6 @@
                 <ScrollView orientation="vertical">
                     <Label id="Description" textWrap="true" :text="product.description"/>
                 </ScrollView>
-                <Label id="subtitle" :text="'Price: $' + product.price"/>
-                <Button id="Button" @tap="addToCart" text="Add to Cart"></Button>
             </StackLayout>
             <Label row="1" id="subtitle" :text="'Price: $' + product.price"/>
             <Button row="2" id="Button" @tap="addToCart" text="Add to Cart"></Button>
@@ -46,13 +44,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-    $secondary: #009358;
-    $primary: #53ba82;
-    $third: #1c6b48;
-    $white: rgb(246, 246, 246);
-    $black: rgb(50, 50, 50);
-    $background: #454d66;
+<style scoped>
+ 
 
 #Name {
     font-size: 24px;
@@ -70,7 +63,7 @@ export default {
 }
 
 #Button {
-    background-color: #009358;
+    background-color: #58b368;
     border-radius: 5;
     margin: 10px;
     font-size: 24px;
