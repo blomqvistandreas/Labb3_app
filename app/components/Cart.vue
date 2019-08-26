@@ -124,6 +124,11 @@
     $background: #454d66;
     $find: yellow;
 
+    ActionBar {
+    background-color: #58b368;
+    color: white;
+  }
+
     .page {
         background-color: $white;
         color: $black;
