@@ -26,7 +26,7 @@ export default new Vuex.Store({
         price: 300, name: "hello", quantity: 3, id: "14"
       }
     ],
-    details: {
+    customer: {
       fname: null,
       lname: null,
       mail: null,
