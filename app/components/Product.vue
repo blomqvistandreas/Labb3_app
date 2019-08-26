@@ -2,7 +2,7 @@
     <Page actionBarHidden="false">
         <ActionBar title="">
         </ActionBar>
-        <GridLayout columns="*" rows="*, 50, 50">
+        <GridLayout columns="*" rows="*, 70, 70">
             <StackLayout row="0">
                 <Image :src="product.image" backgroundColor="white" stretch="aspectFill" height="250" width="100%" />
                 <Label id="Name" textWrap="true" :text="product.name" width="100%" />

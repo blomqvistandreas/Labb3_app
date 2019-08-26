@@ -88,7 +88,7 @@ export default {
     },
     methods: {
         getProductsFromDB(payload) {
-          fetch('http://localhost:5000/api/products/?filter='+this.activeTab+'&letter='+this.activeLetter+'&page='+payload)
+          fetch('http://192.168.0.206:5000/api/products/?filter='+this.activeTab+'&letter='+this.activeLetter+'&page='+payload)
           .then(response => response.json())
           .then(result => {
             if(result.length === 0) {

@@ -6,26 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    cart: [
-      {
-        price: 300, name: "hello", quantity: 3, id: "68"
-      },
-      {
-        price: 300, name: "hello", quantity: 3, id: "28"
-      },
-      {
-        price: 300, name: "hello", quantity: 3, id: "18"
-      },
-      {
-        price: 300, name: "hello", quantity: 3, id: "13"
-      },
-      {
-        price: 300, name: "hello", quantity: 3, id: "15"
-      },
-      {
-        price: 300, name: "hello", quantity: 3, id: "14"
-      }
-    ],
+    cart: [],
     customer: {
       fname: null,
       lname: null,
@@ -113,32 +94,4 @@ export default new Vuex.Store({
       state.cart.push(product)
     }
   },
-  // actions: {
-  //   getProductsFromDB(context){
-  //     fetch(this.state.adress +'api/products/'
-  //     /*+context.state.productFilter.tab+'/'+context.state.productFilter.letter*/)
-  //     .then(response => response.json())
-  //     .then(result => {
-
-  //       //TODO: testing with price multiplier
-  //       result.forEach(product => {
-  //         let multiplier = context.getters.priceMultiplier
-  //         product.price *= multiplier
-  //         product.price /= 10
-  //         product.price = Math.round(product.price)
-  //         product.price *= 10
-
-  //         //console.log(product);
-
-  //         //set image
-  //         //product.image = 'src/assets/products/' +product.id +'.png'
-  //       });
-
-  //       //set store products
-  //       context.commit('setProducts', result)
-  //     }).catch(error => {
-  //         console.log(error.message)
-  //     })
-  //   }
-  //},
 });
