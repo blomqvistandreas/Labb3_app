@@ -1,13 +1,13 @@
 <template>
     <Page actionBarHidden="false">
-      <ActionBar title="Personal Details">
+      <ActionBar title="Personal details">
       </ActionBar>
       <GridLayout columns="*" rows="*,*,*,*,*" backgroundColor="#3c495e">
         <TextField row="0" v-model="firstName" hint="First name"/>
         <TextField row="1" v-model="lastName" hint="Last name" />
         <TextField row="2" v-model="mail" hint="Email"/>
         <TextField row="3" v-model="phone" hint="Phone number" />
-        <Button row="5" text="Continue" @tap="nextPage"/>
+        <Button row="4" text="Continue" @tap="nextPage"/>
       </GridLayout>
     </Page>
 </template>
@@ -55,15 +55,13 @@ TextField {
 }
 Button {
   background-color: #58b368;
-  padding: 30;
-  margin: 40;
-  margin-left: 100;
-  margin-right: 100;
-  margin-bottom: 30;
   border-radius: 10;
-  font-size: 25%;
+  font-size: 20%;
   color: white;
-  margin-bottom: 10px;
+  margin-right: 100;
+  margin-left: 100;
+  margin-top: 20;
+  margin-bottom: 50;
 }
 
 </style>

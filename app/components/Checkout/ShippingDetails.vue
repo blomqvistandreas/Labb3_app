@@ -1,16 +1,14 @@
 <template>
-  <!-- ShippingDetails -->
     <Page actionBarHidden="false">
-      <ActionBar title="">
+      <ActionBar title="Shipping details">
       </ActionBar>
-      <StackLayout backgroundColor="#3c495e">
-        <TextField v-model="country" hint="Country"/>
-        <TextField v-model="zipCode" hint="ZIP Code" />
-        <TextField v-model="city" hint="City"/>
-        <TextField v-model="address" hint="Address" />
-        <Button text="Continue" @tap="nextPage" />
-      </StackLayout>
-
+      <GridLayout columns="*" rows="*,*,*,*,*" backgroundColor="#3c495e">
+        <TextField row="0" v-model="country" hint="Country"/>
+        <TextField row="1" v-model="zipCode" hint="ZIP Code" />
+        <TextField row="2" v-model="city" hint="City"/>
+        <TextField row="3" v-model="address" hint="Address" />
+        <Button row="4" text="Continue" @tap="nextPage" />
+</GridLayout>
     </Page>
 </template>
 
@@ -45,24 +43,21 @@ ActionBar {
   color: white;
 }
 TextField {
-  background-color: #289062;
-  margin-left: 30;
-  margin-right: 30;
-  margin-top: 50;
-  padding: 15;
-  border-radius: 30;
+  background-color: #009358;
+  margin: 30;
+  padding: 10;
+  border-radius: 20;
   text-align: center;
   outline: inherit;
 }
 Button {
   background-color: #58b368;
-  color: black;
-  border-width: 1;
   border-radius: 10;
-  font-weight: bold;
-  margin-left: 20;
-  margin-right: 20;
-  margin-bottom: 10;
-  height: 60;
+  font-size: 20%;
+  color: white;
+  margin-right: 100;
+  margin-left: 100;
+  margin-top: 20;
+  margin-bottom: 50;
 }
 </style>

@@ -1,16 +1,14 @@
 <template>
-  <!-- PaymentDetails -->
     <Page actionBarHidden="false">
-      <ActionBar title="">
+      <ActionBar title="Payment details">
       </ActionBar>
-      <StackLayout backgroundColor="#3c495e">
-        <TextField hint="Card number"/>
-        <TextField hint="Expiration date"/>
-        <TextField hint="Card number"/>
-        <TextField hint="Security Code" />
-        <Button text="Send my order" @tap="confirmOrder" />
-
-      </StackLayout>
+      <GridLayout columns="*" rows="*,*,*,*,*" backgroundColor="#3c495e">
+        <TextField row="0" hint="Card number"/>
+        <TextField row="1" hint="Expiration date"/>
+        <TextField row="2" hint="Card holder"/>
+        <TextField row="3" hint="Security Code" />
+        <Button row="4" text="Send my order" @tap="confirmOrder" />
+      </GridLayout>
     </Page>
 </template>
 
@@ -41,7 +39,7 @@ export default {
               message: "Your order has been placed and is being processed.",
               okButtonText: "Done"
             }).then(() => {
-              console.log("Returning...");
+              this.$store.commit('emptyCart')
             });
 
         }
@@ -55,25 +53,21 @@ ActionBar {
   color: white;
 }
 TextField {
-  background-color: #289062;
-  text-decoration-color: #289062;
-  margin-left: 30;
-  margin-right: 30;
-  margin-top: 50;
-  padding: 15;
-  border-radius: 30;
+  background-color: #009358;
+  margin: 30;
+  padding: 10;
+  border-radius: 20;
   text-align: center;
   outline: inherit;
 }
 Button {
   background-color: #58b368;
-  color: black;
-  border-width: 1;
   border-radius: 10;
-  font-weight: bold;
-  margin-left: 20;
-  margin-right: 20;
-  margin-bottom: 10;
-  height: 60;
+  font-size: 20%;
+  color: white;
+  margin-right: 100;
+  margin-left: 100;
+  margin-top: 20;
+  margin-bottom: 50;
 }
 </style>
