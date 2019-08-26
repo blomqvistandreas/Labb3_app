@@ -1,10 +1,11 @@
 <template>
+  <!-- ShippingDetails -->
     <Page actionBarHidden="false">
       <StackLayout backgroundColor="#3c495e">
-        <TextField :text="country" hint="Country(Select if possible)"/>
-        <TextField :text="zipCode" hint="ZIP Code" />
-        <TextField :text="city" hint="City"/>
-        <TextField :text="address" hint="Address" />
+        <TextField v-model="country" hint="Country"/>
+        <TextField v-model="zipCode" hint="ZIP Code" />
+        <TextField v-model="city" hint="City"/>
+        <TextField v-model="address" hint="Address" />
         <Button text="Continue" @tap="nextPage" />
       </StackLayout>
 
@@ -17,15 +18,19 @@ import PaymentDetails from './PaymentDetails.vue';
 export default {
     data () {
         return {
+          country: null,
+          zipCode: null,
+          city: null,
+          address: null
         };
     },
     methods: {
         nextPage() {
           // TODO match store.js
-          this.$store.state.details.fname = this.firstName
-          this.$store.state.details.lname = this.lastName
-          this.$store.state.details.mail = this.mail
-          this.$store.state.details.phone = this.phone
+          this.$store.state.customer.country = this.country
+          this.$store.state.customer.zipCode = this.zipCode
+          this.$store.state.customer.city = this.city
+          this.$store.state.customer.address = this.address
           this.$navigateTo(PaymentDetails)
         },
     }
@@ -35,7 +40,7 @@ export default {
 <style scoped>
 TextField {
   background-color: #289062;
-  text-decoration-color: #289062;
+
   margin-left: 30;
   margin-right: 30;
   margin-top: 50;

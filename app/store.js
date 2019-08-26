@@ -6,18 +6,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-<<<<<<< HEAD
-    details: {
+    customer: {
       fname: null,
       lname: null,
       mail: null,
       phone: null,
-      country: null,
+      address: null,
       zipCode: null,
       city: null,
-      address: null
-=======
-    cart: [],
+      country: null
+    },
     loggedIn: false,
     adress: 'localhost:4000' //'http://84.217.234.101:4000/'
   },
@@ -27,19 +25,13 @@ export default new Vuex.Store({
       //return this.state.adress +'/uploads/' + product.image
       return "hello get image"
       //return (this.state.adress + '/uploads/1.png')
->>>>>>> 6374d8f3861b65562ed3f1272a3b3f8404d709b9
+    },
+    getCheckoutDetails() {
+      return details
     },
   },
 
   mutations: {
-<<<<<<< HEAD
-  },
-  
-  getters: {
-    getCheckoutDetails() {
-      return details
-    }
-=======
     setLoggedIn(state) {
       state.loggedIn = true
     },
@@ -72,7 +64,6 @@ export default new Vuex.Store({
           if(state.cart[i].quantity > 1) {
 
             state.cart[i].quantity -=  1//product.quantity
->>>>>>> 6374d8f3861b65562ed3f1272a3b3f8404d709b9
 
             //update cart
             state.cart.push({})

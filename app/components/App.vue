@@ -2,7 +2,7 @@
     <Page class="page">
         <ActionBar title="YardSale" class="action-bar">
         </ActionBar>
-        <GridLayout columns="*" :rows="rows"> 
+        <GridLayout columns="*" :rows="rows">
           <SegmentedBar row="0" col="0" v-model="activeTab" @selectedIndexChange="tabChanged" selectedBackgroundColor="#009975">
             <SegmentedBarItem title="All" />
             <SegmentedBarItem title="Popular" />
@@ -50,7 +50,7 @@
           </ScrollView>
           <StackLayout :row="stackRow" col="0">
             <Button @tap="goToCart" text="Cart"></Button>
-            <Button @tap="goToCheckout" text="Checkout"></Button>          
+            <Button @tap="goToCheckout" text="Checkout"></Button>
             <Button @tap="goToProduct" text="Product"></Button>
           </StackLayout>
         </GridLayout>
