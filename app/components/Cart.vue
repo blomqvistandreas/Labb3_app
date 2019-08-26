@@ -4,16 +4,20 @@
         </ActionBar>
     <StackLayout class="page">
         <!-- <Label class="subtitle" text="Upgrade your lifestyle"/> -->
-        
+        <!-- <SegmentedBar row="0" col="0">
+            <SegmentedBarItem title="Image" />
+            <SegmentedBarItem title="Name" />
+            <SegmentedBarItem title="Price" />
+            <SegmentedBarItem title="Quantity" />
+          </SegmentedBar> -->
         <ListView height="80%" for="item in items" @itemTap="onItemTap">
             <v-template>
-                <!-- Shows the list item label in the default color and style. -->
-               <FlexboxLayout justifyContent="space-around" class="cell" height="90">
+               <FlexboxLayout justifyContent="space-around" class="cell" height="70">
                     <Image :src="item.image" stretch="aspectFit" width="70" />
-                    <Label width="22%" :text="item.name"/>
-                    <Label width="22%" :text="item.price"/>
-                    <Button class="cell-button" width="11%" text="-" @tap="minusTapped(item)"/>
-                    <Label width="11%" :text="item.quantity"/>
+                    <Label class="vcenter" width="22%" :text="item.name"/>
+                    <Label class="vcenter" width="22%" :text="item.price"/>
+                    <Button class="cell-button" width="11%" height="50" text="-" @tap="minusTapped(item)"/>
+                    <Label class="vcenter" width="11%" :text="item.quantity"/>
                     <Button class="cell-button" width="11%" text="+" height="30" @tap="plusTapped(item)"/>
                 </FlexboxLayout>
             </v-template>
@@ -25,7 +29,6 @@
 </template>
 
 <script>
-    //import cartTable from './CartTable'
     import Product from './Product.vue';
     import Checkout from './Checkout/PersonalDetails.vue';
 
@@ -68,19 +71,18 @@
             goToCheckout() {
                 this.$navigateTo(Checkout)
             },
-            onItemTap() {
-                this.$navigateTo(Product)
-            },
-            minusTapped(item) {
-                item.quantity -= 1;
-                if(item.quantity <= 0){
-                    this.removeItem(item)
-                    return
+            onItemTap(event) {                
+                this.$navigateTo(Product, {
+                props: {
+                    productId: event.item.id,
                 }
-                
+                })
+            },
+            minusTapped(item) { 
+                this.$store.commit('decreseItemInCart', item)       
             },
             plusTapped(item) {
-                item.quantity += 1;
+                this.$store.commit('updateCart', item)
             },
             getTotalPrice() {
                 let total = 0;
@@ -102,8 +104,8 @@
 
 
 <style lang="scss" scoped>
-    $primary: #009358;
-    $secondary: #53ba82;
+    $secondary: #009358;
+    $primary: #53ba82;
     $third: #1c6b48;
     $white: rgb(246, 246, 246);
     $black: rgb(50, 50, 50);
@@ -121,8 +123,9 @@
     }
 
     image {
-        height: 33%;
-        margin: 10rem;
+        margin-left: 10rem;
+        margin-right: 10rem;
+        border-radius: 10;
     }
 
     Listview {
@@ -130,20 +133,20 @@
         margin-top: 10rem;
         margin-bottom: 0rem;
         font-size: 14px;
-        // padding-top: 30px;
-        // border-top-width: 1rem;
-        // padding: 4rem;
-        // border-color: $black;
+        font-weight: bold;
     }
 
     .cell-button {
-        height: 33%;
-        // font-weight: bolder;
-        margin: 10rem;
+        margin: 40px;
+    }
+
+    button-div {
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     Button {
-        background-color: $primary;
+        background-color: $secondary;
         border-radius: 5;
         margin: 6rem;
         font-size: 25%;
@@ -154,12 +157,12 @@
        text-align: center;
    } 
 
-   .label-center {
-       vertical-align: center;
+   .vcenter {
+        padding-top: 25;
+        padding-bottom: 25;
    }
 
    .subtitle {
-    //    margin: 6rem;
        font-size: 24px;
        color: $black;
        border-top-width: 1rem;
