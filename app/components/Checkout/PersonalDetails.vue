@@ -30,7 +30,15 @@ export default {
           this.$store.state.customer.lname = this.lastName
           this.$store.state.customer.mail = this.mail
           this.$store.state.customer.phone = this.phone
-          this.$navigateTo(ShippingDetails)
+          this.$navigateTo(ShippingDetails, {
+            transition: {
+
+              // name: 'slideLeft',
+              //
+              // duration: 2000,
+
+            },
+          })
         },
     }
 }

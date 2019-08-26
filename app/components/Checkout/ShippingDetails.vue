@@ -26,12 +26,19 @@ export default {
     },
     methods: {
         nextPage() {
-          // TODO match store.js
           this.$store.state.customer.country = this.country
           this.$store.state.customer.zipCode = this.zipCode
           this.$store.state.customer.city = this.city
           this.$store.state.customer.address = this.address
-          this.$navigateTo(PaymentDetails)
+          this.$navigateTo(PaymentDetails, {
+            transition: {
+
+              // name: 'slideLeft',
+              //
+              // duration: 2000,
+
+            },
+          })
         },
     }
 }

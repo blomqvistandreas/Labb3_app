@@ -134,7 +134,9 @@ export default {
             this.$navigateTo(Cart)
         },
         goToCheckout() {
-            this.$navigateTo(Checkout)
+            this.$navigateTo(Checkout, {
+              clearHistory: true
+            })
         },
         goToProduct() {
             this.$navigateTo(Product)

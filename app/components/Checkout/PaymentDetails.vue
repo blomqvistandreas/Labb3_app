@@ -32,7 +32,9 @@ export default {
               },
               method: 'POST'
             }).then(
-              this.$navigateTo(Home)
+              this.$navigateTo(Home, {
+                clearHistory: true
+              })
             )
             alert({
               title: "Thank you!",
