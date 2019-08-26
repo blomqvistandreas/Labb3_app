@@ -43,24 +43,24 @@ export default {
     margin-bottom: 10;
     margin-top: 10;
     border-style: solid;
-    border-color: $black;
+    border-color: black;
     border-width: 1;
     border-radius: 10;
     background-color: #58b368;
   }
   Label {
     text-align: center;
-    background-color: $secondary;
+    background-color: #58b368;
   }
   Image {
     object-fit: cover;
     height: 340;
     width: 340;
-    background-color: $white;
+    background-color: white;
   }
   GridLayout {
     border-top-width: 1;
-    border-top-color: $black;
+    border-top-color: black;
     border-top-style: solid;
   }
   Button {

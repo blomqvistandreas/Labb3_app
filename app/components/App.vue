@@ -144,31 +144,24 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  $secondary: #009358;
-  $primary: #58b368;
-  $third: #1c6b48;
-  $white: rgb(246, 246, 246);
-  $black: rgb(50, 50, 50);
-  $background: #454d66;
-
+<style scoped>
   ActionBar {
-    background-color: $secondary;
-    color: $white;
+    background-color: #58b368;
+    color: white;
   }
   #backround {
-    background-color: $background
+    background-color: #454d66
   }
   SegmentedBar {
-    background-color: $secondary;
-    color: $white;
+    background-color: #58b368;
+    color: white;
     font-weight: bold;
-    border-color: $secondary;
+    border-color: #58b368;
   }
 
   Button {
-      background-color: $primary;
-      color: $black;
+      background-color: #58b368;
+      color: black;
       border-width: 1;
       border-radius: 10;
       font-weight: bold;
