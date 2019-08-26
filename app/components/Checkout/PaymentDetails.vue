@@ -35,11 +35,11 @@ export default {
               this.$navigateTo(Home)
             )
             alert({
-              title: "Order",
-              message: "Your message",
-              okButtonText: "Your OK button text"
+              title: "Thank you for your order!",
+              message: "Your order has been placed and is being processed.",
+              okButtonText: "Done"
             }).then(() => {
-              console.log("Alert dialog closed");
+              console.log("Returning...");
             });
 
         }
